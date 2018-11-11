@@ -1,0 +1,46 @@
+{
+  "name": "Starter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "android-bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
+  },
+  "dependencies": {
+    "axios": "0.18.0",
+    "prop-types": "15.6.2",
+    "react": "16.6.0-alpha.8af6728",
+    "react-native": "0.57.4",
+    "react-native-keyboard-aware-scroll-view": "^0.6.0",
+    "react-native-size-matters": "^0.1.2",
+    "react-navigation": "2.2.0",
+    "react-navigation-redux-helpers": "1.1.2",
+    "react-redux": "5.0.7",
+    "redux": "4.0.0",
+    "redux-act": "1.7.4",
+    "redux-form": "7.4.2",
+    "redux-persist": "5.10.0",
+    "redux-saga": "0.16.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.1.2",
+    "babel-eslint": "8.2.3",
+    "babel-jest": "23.6.0",
+    "eslint": "4.19.1",
+    "eslint-plugin-import": "2.13.0",
+    "eslint-plugin-react": "7.10.0",
+    "eslint-plugin-react-native": "3.2.1",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.49.0",
+    "react-test-renderer": "16.6.0-alpha.8af6728"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
