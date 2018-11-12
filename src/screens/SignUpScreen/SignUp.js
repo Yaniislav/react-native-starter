@@ -3,12 +3,12 @@ import { View, Keyboard } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 
-import KeyboardAvoidingWrapper from '../../components/UI/KeyboardAvoidingWrapper';
-import FormInput from '../../components/AuthenticationForm/FormInput';
-import DefaultButton from '../../components/UI/DefaultButton';
-import styles from './styles';
+import KeyboardAvoidingWrapper from '../../components/KeyboardAvoidingWrapper';
+import FormInput from '../../components/AuthFormInput';
+import DefaultButton from '../../components/DefaultButton';
 
 import validate from '../../validators/auth-validator';
+import styles from './styles';
 
 @reduxForm({ form: 'signup', validate })
 class SignUp extends Component {

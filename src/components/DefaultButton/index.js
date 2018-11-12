@@ -2,18 +2,18 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import DefaultText from './DefaultText';
+import DefaultText from '../DefaultText';
 import styles from './styles';
 
-const DefaultButton =({
-    outline,
-    onPress,
-    title,
-    containerStyle,
-    slimContures,
-    rounded,
-    disabled,
-    ...rest
+const DefaultButton = ({
+  outline,
+  onPress,
+  title,
+  containerStyle,
+  slimContures,
+  rounded,
+  disabled,
+  ...rest
 }) => (
   <TouchableOpacity
     onPress={onPress}

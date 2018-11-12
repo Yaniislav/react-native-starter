@@ -2,10 +2,6 @@ import React from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PropTypes from 'prop-types';
 
-KeyboardAvoidingWrapper.propTypes = {
-  children: PropTypes.any,
-};
-
 const KeyboardAvoidingWrapper = ({ children, ...rest }) => (
   <KeyboardAwareScrollView
     contentContainerStyle={{ flex: 1 }}
@@ -16,5 +12,9 @@ const KeyboardAvoidingWrapper = ({ children, ...rest }) => (
     {children}
   </KeyboardAwareScrollView>
 );
+
+KeyboardAvoidingWrapper.propTypes = {
+  children: PropTypes.any,
+};
 
 export default KeyboardAvoidingWrapper;

@@ -3,12 +3,13 @@ import { View, Keyboard } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 
-import KeyboardAvoidingWrapper from '../../components/UI/KeyboardAvoidingWrapper';
-import FormInput from '../../components/AuthenticationForm/FormInput';
-import DefaultButton from '../../components/UI/DefaultButton';
+import KeyboardAvoidingWrapper from '../../components/KeyboardAvoidingWrapper';
+import FormInput from '../../components/AuthFormInput';
+import DefaultButton from '../../components/DefaultButton';
+import DefaultText from '../../components/DefaultText';
 
 import validate from '../../validators/auth-validator';
-import DefaultText from '../../components/UI/DefaultText';
+import styles from './styles';
 
 @reduxForm({ form: 'signin', validate })
 export default class SignIn extends Component {
@@ -38,7 +39,7 @@ export default class SignIn extends Component {
     } = this.props;
 
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <KeyboardAvoidingWrapper>
           { this.renderTitle() }
           <Field

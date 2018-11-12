@@ -6,7 +6,7 @@ import {
   takeEvery,
   select,
 } from 'redux-saga/effects';
-import {} from 'react-navigation';
+import { StackActions } from 'react-navigation';
 
 import * as endpoints from '../../constants/endpoints';
 import * as api from './api';
@@ -47,7 +47,9 @@ function* testAuth() {
       const response = yield call(api.get, endpoints.TEST_AUTH_ENDPOINT);
       yield put(actions.userSignedIn(response.data));
     }
-    
+    yield put(StackActions.push({
+      routeName: 'SignIn'
+    }));
   } catch (error) {
     console.log(error.response);
     yield put(actions.testAuthRequestFailedAction());

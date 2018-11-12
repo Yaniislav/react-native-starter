@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation';
 
-import LoginScreen from '../screens/SignInScreen';
+import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import Root from '../screens/Root';
 
@@ -8,8 +8,8 @@ const appNavigator = createStackNavigator({
   Root: {
     screen: Root,
   },
-  Login: {
-    screen: LoginScreen,
+  SignIn: {
+    screen: SignInScreen,
   },
   SignUp: {
     screen: SignUpScreen,
