@@ -48,7 +48,7 @@ function* testAuth() {
       yield put(actions.userSignedIn(response.data));
     }
     yield put(StackActions.push({
-      routeName: 'SignIn'
+      routeName: 'SignIn',
     }));
   } catch (error) {
     console.log(error.response);
