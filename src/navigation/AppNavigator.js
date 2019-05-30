@@ -1,4 +1,4 @@
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
@@ -20,4 +20,4 @@ const appNavigator = createStackNavigator({
   },
 });
 
-export default appNavigator;
+export default createAppContainer(appNavigator);
