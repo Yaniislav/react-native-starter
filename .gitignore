@@ -32,7 +32,6 @@ android/app/src/main/assets/index.android.bundle*
 .gradle
 local.properties
 *.iml
-aweshome-release-key.keystore
 release/
 # node.js
 #
