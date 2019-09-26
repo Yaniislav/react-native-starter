@@ -4,4 +4,4 @@
 export const SIGN_IN_ENDPOINT = '';
 export const SIGN_UP_ENDPOINT = '';
 export const TEST_AUTH_ENDPOINT = '';
-export const REFRESH_ACCESS_TOKEN_ENPOINT = '';
+export const REFRESH_ACCESS_TOKEN_ENDPOINT = '';

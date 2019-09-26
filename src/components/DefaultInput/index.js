@@ -18,7 +18,7 @@ const DefaultInput = ({ inputRef, style, ...rest }) => (
 );
 
 DefaultInput.propTypes = {
-  inputRef: PropTypes.func,
+  inputRef: PropTypes.any,
   style: PropTypes.any,
 };
 
