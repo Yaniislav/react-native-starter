@@ -1,31 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Keyboard } from 'react-native';
 
+import FormProvider from './FormProvider';
 import SignIn from './SignIn';
 import { signInAction } from '../../redux/actions';
 
-@connect(null, ({
-  signIn: signInAction,
-}))
-class LoginScreen extends Component {
-  static propTypes = {
-    navigation: PropTypes.object,
-    signIn: PropTypes.func,
+const LoginScreen = ({ signIn, navigation }) => {
+  const handleSubmit = (data) => {
+    Keyboard.dismiss();
+    signIn(data);
   };
 
-  render() {
-    const {
-      navigation,
-      signIn,
-    } = this.props;
-    return (
-      <SignIn
-        onSubmit={signIn}
-        onGoToSignUpPress={() => navigation.replace('SignUpScreen')}
-      />
-    );
-  }
-}
+  return (
+    <FormProvider onSubmit={handleSubmit}>
+      {props => (
+          <SignIn
+            onGoToSignUpPress={() => navigation.replace('SignUpScreen')}
+            {...props}
+          />
+      )}
+    </FormProvider>
+  );
+};
 
-export default LoginScreen;
+LoginScreen.propTypes = {
+  navigation: PropTypes.object,
+  signIn: PropTypes.func,
+};
+
+export default connect(null, ({
+  signIn: signInAction,
+}))(LoginScreen);

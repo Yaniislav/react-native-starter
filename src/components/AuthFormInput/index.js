@@ -9,20 +9,27 @@ import styles from './styles';
 
 const FormInput = (props) => {
   const {
-    input,
     containerStyle,
     inputContainerStyle,
-    meta: { error, touched },
     inlineImage,
+    name,
+    handleChange,
+    handleBlur,
+    errors,
+    touched,
+    value,
     ...inputProps
   } = props;
 
+  const hasError = touched[name] && errors[name];
+
   const renderError = () => {
-    if (touched && error) {
-      return <DefaultText>{error}</DefaultText>;
+    if (hasError) {
+      return <DefaultText>{errors[name]}</DefaultText>;
     }
     return null;
   };
+
 
   return (
     <View style={[styles.container, containerStyle]}>
@@ -30,36 +37,36 @@ const FormInput = (props) => {
         style={[
           styles.inputContainer,
           inputContainerStyle,
-          (error && touched) ? styles.errorInput : null,
+          (hasError) ? styles.errorInput : null,
         ]}
       >
         <DefaultInput
           style={styles.input}
           {...inputProps}
-          onChangeText={input.onChange}
-          onBlur={input.onBlur}
-          onFocus={input.onFocus}
-          value={input.value}
+          onChangeText={handleChange(name)}
+          onBlur={handleBlur(name)}
+          value={inputProps.value}
           />
       </View>
       <View style={styles.errorContainer}>
-        {
-          renderError()
-        }
+        {renderError()}
       </View>
     </View>
   );
 };
 
 FormInput.propTypes = {
+  ...DefaultInput.propTypes,
   input: PropTypes.object,
   containerStyle: PropTypes.any,
-  meta: PropTypes.shape({
-    touched: PropTypes.bool,
-    error: PropTypes.any,
-  }),
   inlineImage: PropTypes.any,
   inputContainerStyle: PropTypes.any,
+  name: PropTypes.string.isRequired,
+  handleChange: PropTypes.func,
+  handleBlur: PropTypes.func,
+  errors: PropTypes.object,
+  touched: PropTypes.object,
+  value: DefaultInput.propTypes.value,
 };
 
 export default FormInput;
