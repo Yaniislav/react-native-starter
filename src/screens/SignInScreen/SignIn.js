@@ -1,22 +1,13 @@
 import React, { useRef } from 'react';
-import { View, Keyboard } from 'react-native';
-import { reduxForm, Field } from 'redux-form';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
-
 import KeyboardAvoidingWrapper from '../../components/KeyboardAvoidingWrapper';
 import FormInput from '../../components/AuthFormInput';
 import DefaultButton from '../../components/DefaultButton';
 import DefaultText from '../../components/DefaultText';
-
-import validate from '../../validators/auth-validator';
 import styles from './styles';
 
-const SignIn = ({ handleSubmit }) => {
-  const submit = (data) => {
-    Keyboard.dismiss();
-    handleSubmit(data);
-  };
-
+const SignIn = ({ handleSubmit, values, ...props }) => {
   const renderTitle = () => (
     <DefaultText
       large
@@ -33,31 +24,33 @@ const SignIn = ({ handleSubmit }) => {
     <View style={{ flex: 1 }}>
       <KeyboardAvoidingWrapper>
         { renderTitle() }
-        <Field
-          component={FormInput}
-          placeholder={'EMAIL'}
+        <FormInput
+          placeholder='EMAIL'
           name='email'
           autoCapitalize='none'
           returnKeyType='next'
           onSubmitEditing={() => passwordRef.current.focus()}
           keyboardType='email-address'
           maxLength={40}
+          value={values.email}
+          {...props}
         />
-        <Field
-          component={FormInput}
-          placeholder={'PASSWORD'}
+        <FormInput
+          placeholder='PASSWORD'
           containerStyle={styles.lastInput}
           name='password'
           autoCapitalize='none'
           returnKeyType='done'
           inputRef={passwordRef}
           secureTextEntry
-          onSubmitEditing={submit}
+          onSubmitEditing={handleSubmit}
           maxLength={20}
+          value={values.password}
+          {...props}
         />
         <DefaultButton
           title={'Sign  in'}
-          onPress={submit}
+          onPress={handleSubmit}
         />
       </KeyboardAvoidingWrapper>
     </View>
@@ -66,6 +59,7 @@ const SignIn = ({ handleSubmit }) => {
 
 SignIn.propTypes = {
   handleSubmit: PropTypes.func,
+  values: PropTypes.object,
 };
 
-export default reduxForm({ form: 'signin', validate })(SignIn);
+export default SignIn;
